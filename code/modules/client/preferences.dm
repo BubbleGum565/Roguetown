@@ -922,13 +922,13 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	if(user.client.is_new_player())
 		dat = list("<center>REGISTER!</center>")
 
-	winshow(user, "preferencess_window", TRUE)
+	winshow(user, "preferences_window_roguetown", TRUE)
 	var/datum/browser/popup = new(user, "preferences_browser", "<div align='center'>[used_title]</div>")
 	popup.set_window_options("can_close=0")
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
 	update_preview_icon()
-//	onclose(user, "preferencess_window", src)
+//	onclose(user, "preferences_window_roguetown", src)
 
 #undef APPEARANCE_CATEGORY_COLUMN
 #undef MAX_MUTANT_ROWS
