@@ -180,8 +180,8 @@ window "popupwindow"
 		can-resize = false
 		icon = 'icons\\tg_32.png'
 
-window "preferencess_window"
-	elem "preferencess_window"
+window "preferences_window_roguetown"
+	elem "preferences_window_roguetown"
 		type = MAIN
 		pos = 372,150
 		size = 700x530
@@ -192,6 +192,7 @@ window "preferencess_window"
 		can-close = false
 		can-resize = false
 		icon = 'icons\\tg_32.png'
+		saved-params = ""
 	elem "preferences_browser"
 		type = BROWSER
 		pos = 0,0
@@ -209,4 +210,4 @@ window "preferencess_window"
 		right-click = true
 		icon-size = 64
 		zoom-mode = "distort"
-
+		saved-params = ""
