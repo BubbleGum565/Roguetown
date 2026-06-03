@@ -154,6 +154,41 @@ Hotkey-Mode: (hotkey-mode must be on)
 		to_chat(src, "64x... OK")
 		winset(src, "mapwindow.map", "icon-size=64")
 
+/client/verb/set_scaling_method()
+	set name = "Scaling method"
+	set category = "Options"
+
+	if(!prefs)
+		return
+
+	var/choice = input(src, "Choose scaling method", "Scaling method") in list(
+		"Nearest Neighbor",
+		"Point Sampling",
+		"Bilinear"
+	)
+
+	switch(choice)
+		if("Nearest Neighbor")
+			prefs.crt = FALSE
+			winset(src, "mapwindow.map", "zoom-mode=distort")
+			to_chat(src, "Scaling method: Nearest Neighbor.")
+
+		if("Point Sampling")
+			prefs.crt = FALSE
+			winset(src, "mapwindow.map", "zoom-mode=normal")
+			to_chat(src, "Scaling method: Point Sampling.")
+
+		if("Bilinear")
+			prefs.crt = TRUE
+			winset(src, "mapwindow.map", "zoom-mode=blur")
+			to_chat(src, "Scaling method: Bilinear.")
+
+	prefs.save_preferences()
+
+	for(var/atom/movable/screen/scannies/S in screen)
+		S.alpha = prefs.crt ? 70 : 0
+
+/*
 /client/verb/set_stretch()
 	set name = "IconScaling"
 	set category = "Options"
@@ -188,6 +223,7 @@ Hotkey-Mode: (hotkey-mode must be on)
 		to_chat(src, "CRT... ON")
 		for(var/atom/movable/screen/scannies/S in screen)
 			S.alpha = 70
+*/
 
 /client/verb/triggercommend()
 	set category = "OOC"
