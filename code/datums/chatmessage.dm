@@ -123,7 +123,11 @@
 	// BYOND Bug #2563917
 	// Construct text
 	var/static/regex/html_metachars = new(@"&[A-Za-z]{1,7};", "g")
-	var/complete_text = {"<span style='font-size:8pt;font-family:"Pterra";color:[tgt_color];text-shadow:0 0 5px #000,0 0 5px #000,0 0 5px #000,0 0 5px #000;' class='center maptext [extra_classes != null ? extra_classes.Join(" ") : ""]' style='color: [tgt_color]'>[text]</span>"}
+
+	// Runechat-style text formatting.
+	// Uses the "Small Fonts" bitmap font (7px) and a 1px outline to match
+	// the default appearance of Goonstation's Runechat messages.
+	var/complete_text = {"<span class='center maptext [extra_classes != null ? extra_classes.Join(" ") : ""]' style='font-family: \"Small Fonts\"; font-size: 7px; -dm-text-outline: 1px black; color: [tgt_color]; text-shadow: none;'>[text]</span>"}
 
 	var/mheight
 	WXH_TO_HEIGHT(owned_by.MeasureText(complete_text, null, CHAT_MESSAGE_WIDTH), mheight)
